@@ -1,0 +1,1 @@
+default_app_config = 'cms_bbs.apps.CmsBbsConfig'

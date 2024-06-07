@@ -1,0 +1,20 @@
+{% extends "admin/edit_inline/stacked.html" %}
+
+{% block inline_field_sets %}
+<div class="inline-gallery">
+    {% for fieldset in inline_admin_formset %}
+        <div class="card" style="width: 24%; display: inline-block; margin: 5px;">
+            {% for field in fieldset %}
+                {% if field.field.name == 'url' %}
+                    <img src="{{ field.field.value.url }}" style="width: 100%;">
+                {% endif %}
+                <div class="card-body">
+                    {% if field.is_first %}
+                        {{ field.field }} {{ field.errors.as_ul }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

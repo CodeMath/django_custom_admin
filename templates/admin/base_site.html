@@ -1,0 +1,64 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:"Custom Admin" }}{% endblock %}
+
+{% block dark-mode-vars %}
+{% endblock %}
+
+{% block branding %}
+    <div id="site-name"><a href="{% url 'admin:index' %}">
+        <img src="{% static 'logo.png' %}" alt="Custom Admin" class="logo">
+    </a></div>
+    {% if user.is_anonymous %}
+        {% include "admin/color_theme_toggle.html" %}
+    {% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+<!-- Plugin CSS -->
+{% block extrastyle %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        html{
+            --header-bg: #699689 !important;
+        }
+        #nav-sidebar .current-app .section:link, #nav-sidebar .current-app .section:visited {
+            color: white;
+        }
+        #header{
+            background: #10A578 !important;
+        }
+        .breadcrumbs{
+            background: #303030 !important;
+        }
+        body{font-family: 'Noto Sans KR', sans-serif !important;}
+        .logo{height: 30px;}
+        .submit-row input.default{
+            background-color: #000;
+        }
+        .submit-row input{
+            background-color: #666;
+        }
+        .selector-chosen h2{
+            background: #699689 !important;
+        }
+        .button:active, input[type=submit]:active, input[type=button]:active, .button:focus, input[type=submit]:focus, input[type=button]:focus, .button:hover, input[type=submit]:hover, input[type=button]:hover {
+            background: #10A578 !important;
+        }
+        .button.default:active, input[type=submit].default:active, .button.default:focus, input[type=submit].default:focus, .button.default:hover, input[type=submit].default:hover {
+            background: #10A578 !important;
+        }
+        /*
+        Summernote Editor
+        */
+        .summernote-div{
+            width: 100vw !important;
+        }
+
+    </style>
+
+{% endblock %}
